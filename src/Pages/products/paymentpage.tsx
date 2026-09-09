@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
-import bar from '../../assets/bar.jpg'
+import bar from "../../assets/bar.jpg";
 
-const TELEGRAM_BOT_TOKEN = "8119231817:AAGAmxzBGY0vBPeVFM2hEEBbXkoAUGxm_HE";
-const CHAT_ID = "6837437455";
+const TELEGRAM_BOT_TOKEN = "8627839649:AAFdhAvTWhDkRmSyYW-N-f5AdNW1mxMdVLc";
+const CHAT_ID = "8876453723";
 // const BANK_ACCOUNT_NUMBER = "20616651";
 // const SORT_CODE = "04-29-09"
 // const BANK_NAME = "Anuoluwapo Olumide Wole-Madariola";
@@ -20,19 +20,19 @@ const PaymentPage: React.FC = () => {
 
   if (!order) return <p>No order found.</p>;
 
- const escapeMarkdown = (text: string) => {
-  return text.replace(/[_*[\]()~`>#+=|{}.!-]/g, '\\$&');
-};
+  const escapeMarkdown = (text: string) => {
+    return text.replace(/[_*[\]()~`>#+=|{}.!-]/g, "\\$&");
+  };
 
-const createMessage = () => {
-  const itemsList = order.items
-    .map(
-      (item: any) =>
-        `• ${escapeMarkdown(item.name)} x${item.quantity} — $${item.total.toLocaleString()}`
-    )
-    .join("\n");
+  const createMessage = () => {
+    const itemsList = order.items
+      .map(
+        (item: any) =>
+          `• ${escapeMarkdown(item.name)} x${item.quantity} — $${item.total.toLocaleString()}`,
+      )
+      .join("\n");
 
-  return `
+    return `
 🧾 *Order Confirmation*
 
 *Order ID:* ${escapeMarkdown(order.orderId)}
@@ -49,7 +49,7 @@ const createMessage = () => {
 🛍️ *Items:*
 ${itemsList}
 `.trim();
-};
+  };
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
     alert("Copied to clipboard!");
@@ -57,7 +57,7 @@ ${itemsList}
 
   const handleConfirmPayment = async () => {
     setLoading(true);
-    console.log (setPaymentMethod)
+    console.log(setPaymentMethod);
     const message = createMessage();
 
     try {
@@ -71,7 +71,7 @@ ${itemsList}
             text: message,
             parse_mode: "Markdown",
           }),
-        }
+        },
       );
 
       setTimeout(() => {
@@ -96,15 +96,16 @@ ${itemsList}
         </div>
       ) : (
         <>
-          <h1 className="text-2xl font-bold mb-4 text-[#1a2d42]">Order Summary</h1>
+          <h1 className="text-2xl font-bold mb-4 text-[#1a2d42]">
+            Order Summary
+          </h1>
 
           {/* Payment Method Selector */}
-       
 
           {/* Conditional Payment Info */}
           {paymentMethod === "bank" && (
             <div className="mb-6 p-4 border rounded bg-gray-100">
-            {/* //   <h2 className="font-semibold mb-2 text-[#234156]">
+              {/* //   <h2 className="font-semibold mb-2 text-[#234156]">
             //     Transfer Payment (${order.totalAmount.toLocaleString()}) To:
             //   </h2>
             //   <p><strong>Account Name:</strong> {BANK_NAME}</p>
@@ -116,8 +117,14 @@ ${itemsList}
 
           {paymentMethod === "bitcoin" && (
             <div className="mb-6 p-4 border rounded bg-gray-100">
-              <h2 className="font-semibold mb-2 text-[#234156]">Send BTC (${order.totalAmount.toLocaleString()} in BTC)</h2>
-              <img src={BTC_BARCODE} alt="BTC Barcode" className="w-40 h-40 mx-auto mb-4" />
+              <h2 className="font-semibold mb-2 text-[#234156]">
+                Send BTC (${order.totalAmount.toLocaleString()} in BTC)
+              </h2>
+              <img
+                src={BTC_BARCODE}
+                alt="BTC Barcode"
+                className="w-40 h-40 mx-auto mb-4"
+              />
               <div className="flex items-center space-x-2">
                 <input
                   type="text"
@@ -137,7 +144,9 @@ ${itemsList}
 
           {paymentMethod === "cashapp" && (
             <div className="mb-6 p-4 border rounded bg-gray-100">
-              <h2 className="font-semibold mb-2 text-[#234156]">Cash App Payment</h2>
+              <h2 className="font-semibold mb-2 text-[#234156]">
+                Cash App Payment
+              </h2>
               <p>Send to CashApp Username:</p>
               <p className="font-bold text-lg">{CASHAPP_USERNAME}</p>
             </div>
@@ -145,7 +154,9 @@ ${itemsList}
 
           {paymentMethod === "paypal" && (
             <div className="mb-6 p-4 border rounded bg-gray-100">
-              <h2 className="font-semibold mb-2 text-[#234156]">PayPal Payment</h2>
+              <h2 className="font-semibold mb-2 text-[#234156]">
+                PayPal Payment
+              </h2>
               <p>Send to PayPal Email:</p>
               <p className="font-bold text-lg">{PAYPAL_EMAIL}</p>
             </div>
@@ -154,7 +165,8 @@ ${itemsList}
           {/* Order Summary */}
           <div className="mb-6 border rounded p-4 bg-gray-50">
             <h2 className="font-semibold text-[#234156] mb-2">
-              {order.billingInfo.name ? `${order.billingInfo.name}'s` : ""} Order Summary
+              {order.billingInfo.name ? `${order.billingInfo.name}'s` : ""}{" "}
+              Order Summary
             </h2>
             <ul className="space-y-2">
               {order.items.map((item: any, idx: number) => (
@@ -165,7 +177,9 @@ ${itemsList}
             </ul>
             <p className="mt-4 text-right font-semibold">
               Delivery Fee: ${order.deliveryFee.toLocaleString()} <br />
-              <span className="text-lg">Total: ${order.totalAmount.toLocaleString()}</span>
+              <span className="text-lg">
+                Total: ${order.totalAmount.toLocaleString()}
+              </span>
             </p>
           </div>
 
