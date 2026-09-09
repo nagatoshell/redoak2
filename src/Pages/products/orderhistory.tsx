@@ -18,7 +18,7 @@ const OrderHistory: React.FC = () => {
   );
 
   // WhatsApp number (replace with your own phone number)
-  const whatsappNumber = '+2349132214390'; // Change this to your WhatsApp number
+  const whatsappNumber = '+12134194418'; // Change this to your WhatsApp number
 
   // WhatsApp link with pre-filled message
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${message}`;
