@@ -391,35 +391,39 @@ const ProductDetail: React.FC = () => {
           ))}
         </div>
 
-        <div>
-          <div className="mt-8 border-t pt-6">
-            <h1 className="text-3xl font-bold text-gray-800 text-center font-graffiti">
-              <span className="text-red-600">About</span> Millionaire Boys Club
-            </h1>
+       <div>
+  <div className="mt-8 border-t pt-6">
+    <h1 className="text-3xl font-bold text-gray-800 text-center font-graffiti">
+      <span className="text-red-600">About</span> Red Oak Ranch
+    </h1>
 
-            <p className="text-sm text-gray-800 mt-2 text-center">
-              Rocspace is a premium clothing brand specializing in luxurious
-              outfits. Our mission is to bring elegance and sophistication to
-              your wardrobe without breaking the bank.
-            </p>
-          </div>
+    <p className="text-sm text-gray-800 mt-2 text-center max-w-2xl mx-auto leading-6">
+      Red Oak Ranch is dedicated to bringing quality ranch-raised beef
+      from our ranch to your table. We believe great beef starts with
+      responsible ranching, careful attention to quality, and a commitment
+      to producing food your family can enjoy.
+    </p>
+  </div>
 
-          {/* Social Media */}
-          <div className="mt-6 flex justify-center space-x-4">
-            <a
-              href="mailto:rockspace"
-              className="text-black hover:text-red-500"
-            >
-              <FaEnvelope size={24} />
-            </a>
-            <a
-              href="https://instagram.com/rocspace_mbc"
-              className="text-black hover:text-red-500"
-            >
-              <FaInstagram size={24} />
-            </a>
-          </div>
-        </div>
+  {/* Social Media */}
+  <div className="mt-6 flex justify-center space-x-4">
+    <a
+      href="mailto:info@redoakranch.com"
+      aria-label="Email Red Oak Ranch"
+      className="text-black transition-colors duration-300 hover:text-red-600"
+    >
+      <FaEnvelope size={22} />
+    </a>
+
+    <a
+      href="#"
+      aria-label="Red Oak Ranch on Instagram"
+      className="text-black transition-colors duration-300 hover:text-red-600"
+    >
+      <FaInstagram size={22} />
+    </a>
+  </div>
+</div>
       </div>
       <FeaturedProduct />
       <ReviewComponent />
